@@ -1,0 +1,10 @@
+[staging_servers]
+client1 ansible_host=client1.kamil.az  ansible_user=ansible  ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
+
+[prod_servers]
+client2 ansible_host=client2.kamil.az  
+
+[prod_servers:vars]
+ansible_user=ansible 
+ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
+

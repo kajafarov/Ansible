@@ -1,0 +1,34 @@
+---
+- name: Loops Playbook
+  hosts: client1
+  become: yes
+  
+  tasks:
+  - name: Say Hello to ALL
+    debug: msg="Hello {{ item }}"
+    loop: 
+       - "Vasya"
+       - "Petya"
+       - "Masha"
+       - "Olya"
+
+  - name: Loop Until examle
+    shell: echo -n Z >> myfile.txt && cat myfile.txt
+    register: output
+    delay: 2
+    retries: 10
+    until: output.stdout.find{"ZZZZZZZZZZ") == false 
+
+
+  - name: Print  final Output
+    debug:
+      var: output.stdout
+
+
+
+#  - name: install many packages
+#    yum: name={{ item }} state=installed
+#    loop:
+#       - python
+#       - tree
+         
